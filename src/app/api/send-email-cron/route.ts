@@ -21,10 +21,10 @@ export async function GET () {
   WHERE timestamp >= CURRENT_TIMESTAMP - INTERVAL '24 hours';
   `
 
-  console.log(messages)
-
   const mail = (email: email) => {
-    return `Enviado por ${email.name}.<br>Su número de contacto es ${email.phone}.<br>Petición o agradecimiento: ${email.content}.<br>Enviado ${email.timestamp}.<br><br>`
+    if (email === null) {
+      return 'No hubo peticiones las ultimas 24 horas'
+    } else { return `Enviado por ${email.name}.<br>Su número de contacto es ${email.phone}.<br>Petición o agradecimiento: ${email.content}.<br>Enviado ${email.timestamp}.<br><br>` }
   }
 
   const listOfMails = messages.map((message) => {
