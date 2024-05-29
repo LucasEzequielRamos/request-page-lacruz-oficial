@@ -27,3 +27,20 @@ body {
     text-wrap: balance;
   }
 }
+
+input {
+  color: white;
+  all: unset;
+  direction: ltr;
+  text-align: start;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 100px black inset !important;
+  -webkit-text-fill-color: white !important;
+  box-shadow: 0 0 0 100px black inset !important;
+  -webkit-text-fill-color: white !important;
+}
