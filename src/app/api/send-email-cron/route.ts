@@ -23,6 +23,7 @@ export async function GET () {
         `
 
     const mail = (email: email) => {
+      console.log(email.timestamp)
       return `Enviado por ${email.name}.<br>Su número de contacto es ${email.phone}.<br>Petición o agradecimiento: ${email.content}.<br>Enviado ${email.timestamp}.<br><br>`
     }
 
@@ -35,6 +36,10 @@ export async function GET () {
     console.log(listOfMails)
     console.log(messageToSend)
 
+    const date = new Date()
+
+    const formattedDate = date.toString().split(' ').slice(0, 5).join(' ')
+
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -44,7 +49,7 @@ export async function GET () {
       body: JSON.stringify({
         from: 'Bot de peticiones <onboarding@resend.dev>',
         to: ['lucaseramos13@gmail.com'],
-        subject: 'Test from next',
+        subject: `Peticiones y agradecimientos. ${formattedDate}`,
         html: `<strong>${messageToSend}</strong>`
       })
     })
