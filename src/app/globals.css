@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+  @font-face {
+    font-family: "Gilroy-Light";
+    src: url(../../public/fonts/Gilroy-Light.woff2) format(woff2);
+  }
+
+  @font-face {
+    font-family: "Gilroy-ExtraBold";
+    src: url(../../public/fonts/Gilroy-Extrabold.woff2) format(woff2);
+  }
+
+  @font-face {
+    font-family: "Beauty-Luxury";
+    src: url(../../public/fonts/BeautyLuxury-Regular.woff) format(woff);
+  }
+}
+
+body {
+  font-family: 'Gilroy-Light' !important;
+}
+
+h1,
+h2,
+h3,
+button {
+  font-family: 'Gilroy-ExtraBold' !important;
+}
+
+span {
+  font-family: 'Beauty-Luxury';
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,9 +56,10 @@
 }
 
 body {
-  background: linear-gradient(to bottom,
+  background-color: #f5f5f5;
+  /* background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
 }
 
 @layer utilities {
@@ -28,11 +68,13 @@ body {
   }
 }
 
-input {
+input,
+textarea {
   color: white;
   all: unset;
   direction: ltr;
   text-align: start;
+  font-size: 1.2rem;
 }
 
 input:-webkit-autofill,
@@ -43,4 +85,13 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: white !important;
   box-shadow: 0 0 0 100px black inset !important;
   -webkit-text-fill-color: white !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-weight: bold;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
