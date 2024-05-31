@@ -5,9 +5,9 @@ const Hero = () => {
         <span className="text-[180px]">b</span>
         <p className="text-[140px]">ienvenido</p>
         </div>
-        <div className=" flex justify-center pt-5 items-center z-10">
+        <div className=" flex justify-center pt-5   items-center z-10">
         <p className="text-[130px] shadow-black ">famili</p>
-        <span className="text-[160px] w-24">a</span>
+        <span className="text-[160px]  relative -inset-x-6">a</span>
         </div>
 
         <div className="flex justify-center text-center items-center pt-56">
