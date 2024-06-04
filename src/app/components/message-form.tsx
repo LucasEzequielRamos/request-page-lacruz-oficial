@@ -8,10 +8,9 @@ const MessageForm = ({ motif, setMotif }: { motif: string, setMotif: React.Dispa
   const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(() => {
-      const isFormComplete = formRef.current && formRef.current.checkValidity()
-      const newAppStatus = isFormComplete ? APP_STATUS.ALREADY_SEND : APP_STATUS.IDLE
-      setAppStatus(newAppStatus)
-    
+    const isFormComplete = formRef.current && formRef.current.checkValidity()
+    const newAppStatus = isFormComplete ? APP_STATUS.ALREADY_SEND : APP_STATUS.IDLE
+    setAppStatus(newAppStatus)
   }, [formRef.current, appStatus])
 
   return (
@@ -26,10 +25,10 @@ const MessageForm = ({ motif, setMotif }: { motif: string, setMotif: React.Dispa
       setMotif('')
     }}className='flex flex-col gap-5 w-full pb-6'>
       <div className='flex [&>input]:py-9 [&>input]:px-4 [&>input]:rounded-full [&>input]:border-[#f5f5f5] [&>input]:border-solid [&>input]:border-4 [&>input]:bg-black gap-7  '>
-        <input className='w-3/5 focus-visible:outline-none autofill:bg-black' name='name' maxLength={20} placeholder='Escribe tu nombre' type='text' onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required/>
-        <input className='w-2/5 focus-visible:outline-none ' name='phone' placeholder='Escribe tu numero de contacto' type='number' onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required />
+        <input aria-label='name-input' className='w-3/5 focus-visible:outline-none autofill:bg-black' name='name' maxLength={20} placeholder='Escribe tu nombre' type='text' onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required/>
+        <input aria-label='phone-input' className='w-2/5 focus-visible:outline-none ' name='phone' placeholder='Escribe tu numero de contacto' type='number' onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required />
       </div>
-      <textarea className='h-[300px] pt-14 px-12 text-clip rounded-[90px] bg-black border-2 border-[#f5f5f5] border-solid focus-visible:outline-none' name='content' placeholder={`Escribe tu ${motif}`} onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required/>
+      <textarea aria-label='content-input' className='h-[300px] pt-14 px-12 text-clip rounded-[90px] bg-black border-2 border-[#f5f5f5] border-solid focus-visible:outline-none' name='content' placeholder={`Escribe tu ${motif}`} onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required/>
       <div className='w-full flex justify-center'>
       <button className={`text-[#f5f5f5] flex text-center justify-center w-1/3 text-5xl rounded-[40px] py-6 bg-black   ${appStatus === APP_STATUS.IDLE ? 'pointer-events-none' : ''} `}
       disabled={appStatus === APP_STATUS.SENDING || appStatus === APP_STATUS.IDLE}>

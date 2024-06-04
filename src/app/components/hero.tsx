@@ -3,7 +3,7 @@ const Hero = () => {
     <div className="relative bg-cover bg-center h-screen" style={{ backgroundImage: "url('./fake-image.png" }}>
         <div className=" flex opacity-100 justify-center h-[50px] pt-40 items-center z-10">
         <span className="text-[180px]">b</span>
-        <p className="text-[140px]">ienvenido</p>
+        <p className="text-[140px]">ienvenida</p>
         </div>
         <div className=" flex justify-center pt-5   items-center z-10">
         <p className="text-[130px] shadow-black ">famili</p>
