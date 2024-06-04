@@ -27,7 +27,8 @@ export async function POST (req: NextRequest) {
       to: 'intercesores@lacruz.com',
       bcc: [
         'lucaseramos13@gmail.com',
-        'lucasel.mejor.capo98.1@gmail.com'
+        'lucasel.mejor.capo98.1@gmail.com',
+        'vaninacervello@gmail.com'
       ],
       subject: 'Pedidos de oracion o agradecimientos',
       html: `<strong>Enviado por ${name}.<br>Su número de contacto es ${phone}.<br>Petición o agradecimiento: ${content}.<br>Enviado<br><br></strong>`
