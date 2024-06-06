@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server'
+import { sql } from '@vercel/postgres'
 
 export async function POST (req: NextRequest) {
   try {
@@ -9,6 +10,11 @@ export async function POST (req: NextRequest) {
     if (name === null || phone === null || content === null) {
       return NextResponse.json({ message: 'empty name, phone or content' })
     }
+
+    const messageToUpload =
+  await sql`INSERT INTO messages (name, phone, content, timestamp) VALUES (${msg.name}, ${msg.phone}, ${msg.content}, CURRENT_TIMESTAMP - INTERVAL '3  hours') RETURNING *`
+
+    console.log(messageToUpload.rows)
 
     const queryParams = new URLSearchParams({
       chat_id: '-1002149412259',

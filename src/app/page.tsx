@@ -62,7 +62,6 @@ export default function Home () {
       const formCurrent1 = formRef.current[0] as HTMLInputElement
       const formCurrent2 = formRef.current[1] as HTMLInputElement
       const formCurrent3 = formRef.current[2] as HTMLInputElement
-      console.log(formCurrent2.value)
       if (formCurrent1.value !== '' && formCurrent2.value !== '' && formCurrent3.value !== '') {
         setAppStatus(APP_STATUS.ALREADY_SEND)
       } else {
