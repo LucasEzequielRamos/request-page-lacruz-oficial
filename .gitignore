@@ -10,6 +10,9 @@
 /coverage
 jest.config.ts
 jest.setup.ts
+/src/__tests__
+jest.config.ts
+jest.setup.ts
 __tests__
 
 # next.js
