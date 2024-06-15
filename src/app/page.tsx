@@ -3,21 +3,22 @@ import MessageForm from './components/message-form'
 import Header from './components/header'
 import Hero from './components/hero'
 import MainSection from './components/main-section'
-import { useState } from 'react'
+import useSetReason from './hooks/use-set-reason'
 
 export default function Home () {
-  const [motif, setMotif] = useState<string>('')
+  const { reason, setReason, REASONS } = useSetReason()
 
   return (
     <main className="w-full">
       <Header/>
       <Hero/>
-      <MainSection setMotif={setMotif}/>
+      <MainSection setReason={setReason} REASONS={REASONS}/>
       {
-        motif !== ''
-          ? <MessageForm motif={motif} setMotif={setMotif}/>
+        reason
+          ? <MessageForm reason={reason} setReason={setReason}/>
           : ''
       }
+
     </main>
 
   )

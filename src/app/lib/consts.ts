@@ -6,3 +6,8 @@ export const APP_STATUS = {
   SENDING: 'sending',
   SENDED: 'sended'
 }
+
+export const REASONS = {
+  REQUEST: 'peticion',
+  GRATITUDE: 'agradecimienot'
+}

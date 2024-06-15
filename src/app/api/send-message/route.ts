@@ -5,26 +5,27 @@ export async function POST (req: NextRequest) {
   try {
     const msg = await req.json()
     const { name, phone, content } = msg
-    console.log({ name, phone, content })
+    // console.log({ name, phone, content })
 
     if (name === null || phone === null || content === null) {
       return NextResponse.json({ message: 'empty name, phone or content' })
     }
+    const dateSended = new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' })
 
-  //   const messageToUpload =
-  // await sql`INSERT INTO messages (name, phone, content, timestamp) VALUES (${msg.name}, ${msg.phone}, ${msg.content}, CURRENT_TIMESTAMP - INTERVAL '3  hours') RETURNING *`
+    // const messageToUpload =
+    // await sql`INSERT INTO messages (name, phone, content, timestamp) VALUES (${msg.name}, ${msg.phone}, ${msg.content}, CURRENT_TIMESTAMP - INTERVAL '3  hours') RETURNING *`
 
-  //   const queryParams = new URLSearchParams({
-  //     chat_id: '-1002149412259',
-  //     text: `<strong>Enviado por ${name}.\nSu número de contacto es ${phone}.\nPetición o agradecimiento: ${content}.\nEnviado \n</strong>`,
-  //     parse_mode: 'HTML'
-  //   }).toString()
+    const queryParams = new URLSearchParams({
+      chat_id: '-1002149412259',
+      text: `<a>Enviado por: <strong> ${name}</strong>.\nSu número de contacto es: <strong>${phone}</strong>.\nPetición o agradecimiento: <strong>${content}</strong>.\nEnviado: <strong>${dateSended}</strong> \n</a>`,
+      parse_mode: 'HTML'
+    }).toString()
 
-    // const res = await fetch(`https://api.telegram.org/bot${process.env.TOKEN_BOT}/sendMessage?${queryParams}`)
-    // const message = await res.json()
+    const res = await fetch(`https://api.telegram.org/bot${process.env.TOKEN_BOT}/sendMessage?${queryParams}`)
+    const message = await res.json()
 
     // console.log(messageToUpload.rows)
-    console.log(msg)
+    console.log(message)
     return NextResponse.json(msg)
   } catch (error: any) {
     console.log(error)
