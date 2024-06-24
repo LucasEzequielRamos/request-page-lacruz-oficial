@@ -1,8 +1,33 @@
 import { toast } from 'react-hot-toast'
+import { forbiddenWords } from './consts'
 
 export const postEmail = async (formData: FormData) => {
   const contentForm = { name: formData.get('name'), phone: formData.get('phone'), content: formData.get('content') }
-  console.log(contentForm)
+
+  const containsForbiddenWords = (text: string) => {
+    const normalizedText = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    return forbiddenWords.some(word => normalizedText.includes(word))
+  }
+
+  if (containsForbiddenWords(contentForm.name as string) || containsForbiddenWords(contentForm.content as string)) {
+    toast.error('Su texto contiene palabras no permitidas, como insultos. Revise nuevamente su mensaje', {
+      duration: 5000,
+      style: {
+        padding: '16px',
+        width: '250%',
+        background: '#333',
+        borderRadius: '99px',
+        fontSize: '20px',
+        color: 'white'
+
+      },
+      iconTheme: {
+        primary: '#713200',
+        secondary: '#FFFAEE'
+      }
+    })
+    return
+  }
   try {
     const res = await fetch('/api/send-message', {
       method: 'POST',
@@ -47,9 +72,7 @@ export const postEmail = async (formData: FormData) => {
           primary: '#713200',
           secondary: '#FFFAEE'
         }
-
       }
-
     )
   }
 }
