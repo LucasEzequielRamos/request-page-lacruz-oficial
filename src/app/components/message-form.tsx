@@ -24,7 +24,7 @@ const MessageForm = ({ reason, setReason }: { reason: string, setReason: React.D
       formRef.current?.reset()
       setReason('')
     }}className='flex flex-col gap-5 w-full pb-6'>
-      <div className='flex lg:[&>input]:py-9 [&>input]:px-3 [&>input]:rounded-[50px] [&>input]:border-[#f5f5f5] [&>input]:border-solid [&>input]:border-4 [&>input]:bg-[#f5f5f5] lg:gap-7 gap-2  '>
+      <div className='flex lg:[&>input]:py-9 [&>input]:px-3 [&>input]:rounded-[50px] [&>input]:border-[#f5f5f5] [&>input]:border-solid [&>input]:border-4 [&>input]:bg-[#f5f5f5] [&>input]:text-black lg:gap-7 gap-2  '>
         <input aria-label='name-input' className='w-3/5 focus-visible:outline-none ' name='name' maxLength={20} placeholder='Nombre y apellido' type='text' onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required/>
         <input aria-label='phone-input' className='w-2/5 focus-visible:outline-none ' name='phone' placeholder='Telefono' type='number' onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required />
       </div>
