@@ -4,7 +4,6 @@ import { REASONS } from '../lib/consts'
 
 const useSetReason = () => {
   const [reason, setReason] = useState<string>()
-  console.log(reason)
 
   return {
     reason, setReason, REASONS

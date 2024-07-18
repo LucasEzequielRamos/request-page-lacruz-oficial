@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="bg-black py-1 flex justify-center w-full text-[80px] font-bold text-white"> <h2>LA CRUZ</h2> </header>
+    <header className="bg-[#1C1D1E] py-2 flex justify-center w-full font-bold text-[#f5f5f5]"> <img className="lg:h-auto h-7" src="./lacruz-logo.webp"/> </header>
   )
 }
 

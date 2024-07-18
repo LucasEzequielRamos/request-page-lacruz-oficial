@@ -8,7 +8,7 @@ export const APP_STATUS = {
 }
 
 export const REASONS = {
-  REQUEST: 'peticion',
+  REQUEST: 'pedido',
   GRATITUDE: 'agradecimiento'
 }
 
