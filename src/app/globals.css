@@ -22,6 +22,11 @@
 
 body {
   font-family: 'Gilroy-Light' !important;
+  color: #1c1e1d;
+}
+
+p {
+  line-height: 0.9
 }
 
 h1,
@@ -41,6 +46,10 @@ span {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+#hero-bg {
+  background-image: url("../../public/igle-background-desktop.jpg");
 }
 
 :root {
@@ -104,6 +113,12 @@ textarea::placeholder {
   textarea {
     font-size: 12px;
   }
+
+  #hero-bg {
+    background-image: url("../../public/igle-background-mobile.jpg");
+  }
+
+
 }
 
 input[type=number]::-webkit-inner-spin-button,
