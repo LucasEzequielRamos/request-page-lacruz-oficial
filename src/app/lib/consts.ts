@@ -9,7 +9,8 @@ export const APP_STATUS = {
 
 export const REASONS = {
   REQUEST: 'pedido',
-  GRATITUDE: 'agradecimiento'
+  GRATITUDE: 'testimonio',
+  UPDATE: 'actualización'
 }
 
 export const forbiddenWords: string[] = [
