@@ -1,8 +1,8 @@
 import { toast } from 'react-hot-toast'
 import { forbiddenWords } from './consts'
 
-export const postEmail = async (formData: FormData) => {
-  const contentForm = { name: formData.get('name'), phone: formData.get('phone'), content: formData.get('content') }
+export const sendMessage = async (formData: FormData, reason: string) => {
+  const contentForm = { name: formData.get('name'), phone: formData.get('phone'), content: formData.get('content'), reason }
 
   const containsForbiddenWords = (text: string) => {
     const normalizedText = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()

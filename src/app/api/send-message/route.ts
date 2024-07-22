@@ -4,8 +4,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 export async function POST (req: NextRequest) {
   try {
     const msg = await req.json()
-    const { name, phone, content } = msg
-    // console.log({ name, phone, content })
+    const { name, phone, content, reason } = msg
 
     if (name === null || phone === null || content === null) {
       return NextResponse.json({ message: 'empty name, phone or content' })
@@ -17,7 +16,7 @@ export async function POST (req: NextRequest) {
 
     const queryParams = new URLSearchParams({
       chat_id: '-1002149412259',
-      text: `<a>Enviado por: <strong> ${name}</strong>.\nSu número de contacto es: <strong>${phone}</strong>.\nPetición o agradecimiento: <strong>${content}</strong>.\nEnviado: <strong>${dateSended}</strong> \n</a>`,
+      text: `<a>Enviado por: <strong> ${name}</strong>.\n\nSu número de contacto es: <strong>${phone}</strong>.\n\nMotivo: <strong>${reason}</strong>.\n\nMensaje enviado: <strong>${content}</strong>.\n\nEnviado: <strong>${dateSended}</strong> \n\n</a>`,
       parse_mode: 'HTML'
     }).toString()
 

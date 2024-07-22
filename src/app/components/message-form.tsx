@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useRef } from 'react'
-import { postEmail } from '../lib/actions'
+import { sendMessage } from '../lib/actions'
 import { useAppStatus } from '../hooks/use-status-app'
 import { preload } from 'react-dom'
 
@@ -26,7 +26,7 @@ const MessageForm = ({ reason, setReason }: { reason: string, setReason: React.D
     <button onClick={() => { setReason('') }} className='lg:pt-10 pt-3 lg:pr-4 w-full flex justify-end '><img src="x.webp" className='max-sm:size-3' alt="x icon" /></button>
     <h2 className='text-[#f5f5f5] font-extrabold lg:pb-12 lg:pt-10 pt-3 pb-5 w-full lg:text-7xl text-[1.375rem]'>{isReasonPedido === 1 ? 'QUEREMOS ORAR CON VOS!' : isReasonPedido === 2 ? 'CELEBREMOS JUNTOS!' : 'ACTUALIZACIÓN DE PEDIDO'}</h2>
     <form ref={formRef} action={async (formData) => {
-      await postEmail(formData)
+      await sendMessage(formData, reason)
       setAppStatus(APP_STATUS.IDLE)
       formRef.current?.reset()
       setReason('')
