@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react'
 import { postEmail } from '../lib/actions'
 import { useAppStatus } from '../hooks/use-status-app'
+import { preload } from 'react-dom'
 
 const MessageForm = ({ reason, setReason }: { reason: string, setReason: React.Dispatch<React.SetStateAction<string | undefined>> }) => {
   const { appStatus, setAppStatus, APP_STATUS } = useAppStatus()
@@ -14,6 +15,10 @@ const MessageForm = ({ reason, setReason }: { reason: string, setReason: React.D
   }, [formRef.current, appStatus])
 
   const isReasonPedido = reason === 'pedido' ? 1 : reason === 'testimonio' ? 2 : 3
+
+  preload('/x.webp', {
+    as: 'image'
+  })
 
   return (
     <section className='flex bg-white/40 items-center justify-center fixed top-0 left-0 h-screen w-screen flex-col'>
