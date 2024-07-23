@@ -1,20 +1,16 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { sendMessage } from '../lib/actions'
 import { useAppStatus } from '../hooks/use-status-app'
 import { preload } from 'react-dom'
 
 const MessageForm = ({ reason, setReason }: { reason: string, setReason: React.Dispatch<React.SetStateAction<string | undefined>> }) => {
   const { appStatus, setAppStatus, APP_STATUS } = useAppStatus()
+
   const formRef = useRef<HTMLFormElement>(null)
 
-  useEffect(() => {
-    const isFormComplete = formRef.current && formRef.current.checkValidity()
-    const newAppStatus = isFormComplete ? APP_STATUS.ALREADY_SEND : APP_STATUS.IDLE
-    setAppStatus(newAppStatus)
-  }, [formRef.current, appStatus])
-
   const isReasonPedido = reason === 'pedido' ? 1 : reason === 'testimonio' ? 2 : 3
+  const isDisabled = appStatus === APP_STATUS.SENDING || appStatus === APP_STATUS.IDLE
 
   preload('/x.webp', {
     as: 'image'
@@ -25,9 +21,11 @@ const MessageForm = ({ reason, setReason }: { reason: string, setReason: React.D
     <div className='flex  flex-col lg:min-h-[90%] lg:px-12 px-5 lg:w-7/12 w-10/12 bg-[#1C1D1E] rounded-[20px] lg:rounded-[90px] text-center text-white'>
     <button onClick={() => { setReason('') }} className='lg:pt-10 pt-3 lg:pr-4 w-full flex justify-end '><img src="x.webp" className='max-sm:size-3' alt="x icon" /></button>
     <h2 className='text-[#f5f5f5] font-extrabold lg:pb-12 lg:pt-10 pt-3 pb-5 w-full lg:text-7xl text-[1.375rem]'>{isReasonPedido === 1 ? 'QUEREMOS ORAR CON VOS!' : isReasonPedido === 2 ? 'CELEBREMOS JUNTOS!' : 'ACTUALIZACIÓN DE PEDIDO'}</h2>
-    <form ref={formRef} action={async (formData) => {
+    <form ref={formRef} onSubmit={() => {
+      setAppStatus(APP_STATUS.SENDING)
+      reason === '' && setAppStatus(APP_STATUS.IDLE)
+    }} action={async (formData) => {
       await sendMessage(formData, reason)
-      setAppStatus(APP_STATUS.IDLE)
       formRef.current?.reset()
       setReason('')
     }}className='flex flex-col gap-5 w-full pb-5'>
@@ -37,8 +35,8 @@ const MessageForm = ({ reason, setReason }: { reason: string, setReason: React.D
       </div>
       <textarea aria-label='content-input' className='lg:h-[300px] h-52 lg:pt-14 px-3 pt-4 text-clip lg:rounded-[50px] rounded-[20px] text-black bg-[#f5f5f5] border-2 border-[#f5f5f5] border-solid focus-visible:outline-none' name='content' placeholder={`Escribe ${isReasonPedido === 1 ? `tu ${reason} de oracion` : isReasonPedido === 3 ? `la ${reason} de tu pedido` : `tu ${reason}`} aqui...`} onChange={() => { setAppStatus(APP_STATUS.TYPING) }} required/>
       <div className='w-full flex justify-center'>
-      <button className={`text-[#f5f5f5] flex text-center justify-center w-full lg:text-4xl text-[1.375rem] lg:rounded-[50px] rounded-[30px] lg:py-5 py-2 bg-[#EF8100] lg:w-[30rem]  ${appStatus === APP_STATUS.IDLE ? 'pointer-events-none' : ''} `}
-      disabled={appStatus === APP_STATUS.SENDING || appStatus === APP_STATUS.IDLE}>
+      <button className={`text-[#f5f5f5] flex text-center justify-center w-full lg:text-4xl text-[1.375rem] lg:rounded-[50px] rounded-[30px] lg:py-5 py-2 bg-[#EF8100] lg:w-[30rem]  ${appStatus === APP_STATUS.IDLE || appStatus === APP_STATUS.SENDING ? 'pointer-events-none' : ''}`}
+      disabled={isDisabled}>
         {appStatus === APP_STATUS.SENDING ? 'Enviando...' : `ENVIAR ${reason.toUpperCase()}`}
       </button>
       </div>

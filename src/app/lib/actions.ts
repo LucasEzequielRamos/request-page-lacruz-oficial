@@ -3,12 +3,11 @@ import { forbiddenWords } from './consts'
 
 export const sendMessage = async (formData: FormData, reason: string) => {
   const contentForm = { name: formData.get('name'), phone: formData.get('phone'), content: formData.get('content'), reason }
-
   const containsForbiddenWords = (text: string) => {
     const normalizedText = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     return forbiddenWords.some(word => normalizedText.includes(word))
   }
-
+  console.log('hi')
   if (containsForbiddenWords(contentForm.name as string) || containsForbiddenWords(contentForm.content as string)) {
     toast.error('Su texto contiene palabras no permitidas, como insultos. Revise nuevamente su mensaje', {
       duration: 5000,

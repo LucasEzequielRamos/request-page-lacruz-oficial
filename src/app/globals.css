@@ -25,6 +25,25 @@ body {
   color: #1c1e1d;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  ;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c1e1d;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 p {
   line-height: 1.2
 }

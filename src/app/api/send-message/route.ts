@@ -20,11 +20,11 @@ export async function POST (req: NextRequest) {
       parse_mode: 'HTML'
     }).toString()
 
-    const res = await fetch(`https://api.telegram.org/bot${process.env.TOKEN_BOT}/sendMessage?${queryParams}`)
-    const message = await res.json()
+    // const res = await fetch(`https://api.telegram.org/bot${process.env.TOKEN_BOT}/sendMessage?${queryParams}`)
+    // const message = await res.json()
 
     // console.log(messageToUpload.rows)
-    console.log(message)
+    // console.log(message)
     return NextResponse.json(msg)
   } catch (error: any) {
     console.log(error)
