@@ -5,7 +5,9 @@
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -17,7 +19,8 @@
     "rules": {
       "@typescript-eslint/explicit-function-return-type": "off",
       "react/react-in-jsx-scope": "off",
-      "@typescript-eslint/no-misused-promises": "off"
+      "@typescript-eslint/no-misused-promises": "off",
+      "@typescript-eslint/strict-boolean-expressions": "off"
 
     }
 }

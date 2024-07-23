@@ -1,16 +1,9 @@
 import { useState } from 'react'
+import { APP_STATUS } from '../lib/consts'
 
 export function useAppStatus () {
-  const APP_STATUS = {
-    IDLE: 'idle',
-    ERROR: 'error',
-    TYPING: 'typing',
-    ALREADY_SEND: 'already_send',
-    SENDING: 'sending',
-    SENDED: 'sended'
-  }
-
   const [appStatus, setAppStatus] = useState(APP_STATUS.IDLE)
+  console.log(appStatus)
 
   return {
     appStatus, setAppStatus, APP_STATUS
