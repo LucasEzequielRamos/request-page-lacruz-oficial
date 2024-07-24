@@ -69,6 +69,9 @@ span {
 
 #hero-bg {
   background-image: url("../../public/igle-background-desktop.jpg");
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 :root {
@@ -104,21 +107,17 @@ textarea {
   all: unset;
   direction: ltr;
   text-align: start;
+  font-size: 24px;
+
 }
 
-/* input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 100px black inset !important;
-  -webkit-text-fill-color: white !important;
-  box-shadow: 0 0 0 100px black inset !important;
-  -webkit-text-fill-color: white !important;
-} */
+
 
 input::placeholder,
 textarea::placeholder {
   font-weight: bold;
+  font-size: 24px;
+
 }
 
 @media not all and (min-width: 640px) {
@@ -131,6 +130,8 @@ textarea::placeholder {
   input,
   textarea {
     font-size: 12px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
   #hero-bg {

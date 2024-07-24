@@ -6,8 +6,8 @@ import { Toaster } from 'react-hot-toast'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Estamos para orar por vos | Hace tu pedido de oracion',
-  description: 'Pagina de La Cruz Buenos Aires dedicada a recibir los pedidos de oracion o agradecimient de la gente'
+  title: 'Estamos para orar con vos | Hace tu pedido de oracion',
+  description: 'Página de La Cruz Buenos Aires dedicada a recibir testimonios y pedidos de oración'
 }
 
 export default function RootLayout ({
