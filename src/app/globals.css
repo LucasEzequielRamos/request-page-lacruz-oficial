@@ -120,6 +120,25 @@ textarea::placeholder {
 
 }
 
+@media not all and (min-width: 1564px) {
+
+  input::placeholder,
+  textarea::placeholder {
+    font-size: 18px;
+  }
+
+  input,
+  textarea {
+    font-size: 18px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  #hero-bg {
+    background-size: cover;
+  }
+}
+
 @media not all and (min-width: 640px) {
 
   input::placeholder,
