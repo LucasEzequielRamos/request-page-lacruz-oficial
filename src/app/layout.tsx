@@ -7,7 +7,9 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Estamos para orar con vos | Hace tu pedido de oracion',
-  description: 'Página de La Cruz Buenos Aires dedicada a recibir testimonios y pedidos de oración'
+  description: 'Página de La Cruz Buenos Aires dedicada a recibir testimonios y pedidos de oración',
+  icons: [{ rel: 'Shortcut icon', type: 'image/x-icon', url: '/icon-cruz.webp' }],
+  openGraph: { images: '/igle-background-mobile.jpg' }
 }
 
 export default function RootLayout ({

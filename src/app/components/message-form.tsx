@@ -13,7 +13,8 @@ const MessageForm = ({ reason, setReason }: { reason: string, setReason: React.D
   const isDisabled = appStatus === APP_STATUS.SENDING || appStatus === APP_STATUS.IDLE
 
   preload('/x.webp', {
-    as: 'image'
+    as: 'image',
+    fetchPriority: 'high'
   })
 
   return (
