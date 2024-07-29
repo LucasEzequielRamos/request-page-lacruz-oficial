@@ -10,6 +10,10 @@ const config: Config = {
     fontFamily: {
       gil: "'Gilroy-light'"
     },
+    screens: {
+      lg: '1024px',
+      '2xl': '1650px'
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

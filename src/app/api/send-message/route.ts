@@ -9,7 +9,7 @@ export async function POST (req: NextRequest) {
     if (name === null || phone === null || content === null) {
       return NextResponse.json({ message: 'empty name, phone or content' })
     }
-    const dateSended = new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' })
+    const dateSended = new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false })
 
     const messageToUpload =
     await sql`INSERT INTO messages (name, phone, content, timestamp) VALUES (${msg.name}, ${msg.phone}, ${msg.content}, CURRENT_TIMESTAMP - INTERVAL '3  hours') RETURNING *`
